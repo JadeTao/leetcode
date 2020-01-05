@@ -1,0 +1,38 @@
+/*
+ * @lc app=leetcode.cn id=13 lang=javascript
+ *
+ * [13] 罗马数字转整数
+ */
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function (s) {
+  var bar = [
+    ['IV', 'a'],
+    ['IX', 'b'],
+    ['XL', 'c'],
+    ['XC', 'd'],
+    ['CD', 'e'],
+    ['CM', 'f'],
+  ]
+  var foo = {
+    a: 4,
+    b: 9,
+    c: 40,
+    d: 90,
+    e: 400,
+    f: 900,
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  }
+  return bar.reduce((str, cur) => {
+    return str.replace(cur[0], cur[1])
+  }, s).split('').reduce((res, cur) => res += foo[cur], 0)
+};
+
